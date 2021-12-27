@@ -1,11 +1,31 @@
 package com.walterio12345.gmail.dto;
 
 public class UserDto {
-
-	  private String username;
+		
+		private Long id;
+	  	private String username;
 	    private String password;
+	    private String email;
+	    
+	    
+	    
+	    public Long getId() {
+			return id;
+		}
 
-	    public String getUsername() {
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public String getUsername() {
 	        return username;
 	    }
 

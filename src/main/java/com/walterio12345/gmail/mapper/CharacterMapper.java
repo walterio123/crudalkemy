@@ -19,8 +19,7 @@ import javassist.NotFoundException;
 @Component
 public class CharacterMapper implements Mapper<Character, CharacterDTO>{
 	
-	@Autowired
-	private MovieRepository movieRepository;
+	
 	
 	static List<CharacterDTO>toDTOList(@NotNull List<Character>characters){
 		return characters.stream().map(character ->{
@@ -33,7 +32,6 @@ public class CharacterMapper implements Mapper<Character, CharacterDTO>{
 	}
 	
 	
-	//TODO faltan las listas cuando esten las relaciones
 	@Override
 	public CharacterDTO toDto (Character character) {
 		CharacterDTO dto=new CharacterDTO();
@@ -44,7 +42,6 @@ public class CharacterMapper implements Mapper<Character, CharacterDTO>{
 		
 		if(!character.getMovies().isEmpty() && character.getMovies()!=null) {
 		dto.setMovies(MovieMapper.toDTOList(character.getMovies()));
-		//character.setMovies(movieRepository.findAll());Prueba//
 		}
 		return dto;
 	}

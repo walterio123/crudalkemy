@@ -40,7 +40,7 @@ public class MovieMapper implements Mapper<Movie, MovieDTO> {
 	@Autowired
 	private  CharacterMapper characterMapper;	
 	
-	static List<MovieDTO> toDTOList( List<Movie> movies) {//@NonNull
+	static List<MovieDTO> toDTOList( List<Movie> movies) {
         return movies.stream().map(movie -> {
             MovieDTO dto = new MovieDTO();
             dto.setId(movie.getId());
@@ -50,16 +50,6 @@ public class MovieMapper implements Mapper<Movie, MovieDTO> {
             return dto;
         }).collect(Collectors.toList());
         
-        /*List<MovieDTO> lista=new ArrayList<MovieDTO>();
-         for (Movie obj : movies) {
-			MovieDTO dto=new MovieDTO();
-			dto.setId(obj.getId());
-			dto.setTitle(obj.getTitle());
-			dto.setImage(obj.getImage());
-			dto.setCreationDate(obj.getCreationDate());
-			lista.add(dto);
-		}
-        return lista;*/
     }
 	
 	@Override

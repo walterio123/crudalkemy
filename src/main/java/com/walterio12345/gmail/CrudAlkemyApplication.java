@@ -14,7 +14,7 @@ import com.walterio12345.gmail.entity.Character;
 import com.walterio12345.gmail.entity.Movie;
 
 @SpringBootApplication
-public class CrudAlkemyApplication implements CommandLineRunner{
+public class CrudAlkemyApplication {//implements CommandLineRunner
 
 	@Autowired
 	private MovieRepository movieRepository;
@@ -27,8 +27,8 @@ public class CrudAlkemyApplication implements CommandLineRunner{
 		SpringApplication.run(CrudAlkemyApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
+//	@Override
+//	public void run(String... args) throws Exception {
 //		Character pepe=new Character();
 //		pepe.setAge(36);
 //		pepe.setImage(null);
@@ -60,6 +60,6 @@ public class CrudAlkemyApplication implements CommandLineRunner{
 		//pipo.setMovies(movieRepository.findAll());
 		//characterRepository.save(pipo);
 		//System.out.println("$$$$$--$$$$"+genderRepository.findOne("39558f31-7a4b-43fd-9267-b4ded7813f75"));
-	}
+//	}
 
 }
