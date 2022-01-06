@@ -57,7 +57,7 @@ public class MovieDTO implements Serializable{
 	private String genderId;
 	
 	
-	//TODO @NOTEMPTY??????
+
 	@ArraySchema(schema= @Schema( accessMode = Schema.AccessMode.READ_ONLY))
 	private List<CharacterDTO>characters;
 	

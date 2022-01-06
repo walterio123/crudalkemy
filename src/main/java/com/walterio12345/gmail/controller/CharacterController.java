@@ -2,9 +2,10 @@ package com.walterio12345.gmail.controller;
 
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
+
 
 import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,12 +26,11 @@ import com.walterio12345.gmail.service.CharacterService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import javassist.NotFoundException;
-import lombok.RequiredArgsConstructor;
+
 
 @RestController
 @RequestMapping(path = "characters")
 @Tag(name = "Characters", description = "Operations for movie characters")
-//@RequiredArgsConstructor
 public class CharacterController {
 	
 	@Autowired
@@ -38,7 +38,7 @@ public class CharacterController {
 	
 	
 	@PostMapping
-	public ResponseEntity<CharacterDTO> create(@RequestBody @Valid CharacterDTO character) throws NotFoundException{
+	public ResponseEntity<CharacterDTO> create(@RequestBody @Valid CharacterDTO character) throws Exception {
 		
 		if(character.getId()!=null) {
 			
@@ -51,8 +51,8 @@ public class CharacterController {
 	
 	@GetMapping
 	public ResponseEntity<List<CharacterDTO>> finAll(@RequestParam (required = false) String name,
-													@RequestParam (required = false) Integer age,
-													@RequestParam(required = false) Set<String>movies){
+														  @RequestParam (required = false) Integer age,
+														  @RequestParam(required = false) Set<String>movies){
 		
 		if(name != null) {
 			return ResponseEntity.ok(characterService.findAll(name));
@@ -76,7 +76,7 @@ public class CharacterController {
 		
 	}
 	@PutMapping()
-	public ResponseEntity<CharacterDTO> update(@RequestBody @Valid CharacterDTO characterDTO) throws NotFoundException{
+	public ResponseEntity<CharacterDTO> update(@RequestBody @Valid CharacterDTO characterDTO) throws Exception {
 		
 		
 		return ResponseEntity.ok(characterService.update(characterDTO));

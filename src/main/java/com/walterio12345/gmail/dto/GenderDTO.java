@@ -12,11 +12,13 @@ import com.walterio12345.gmail.entity.Gender;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
-@Data
-//@NoArgsConstructor
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class GenderDTO implements Serializable{
@@ -31,8 +33,9 @@ public class GenderDTO implements Serializable{
 	@NotBlank
 	@Size(max = 40)
 	private String name;
+
+	private boolean deleted;
 	
-	
-;	
+
 
 }

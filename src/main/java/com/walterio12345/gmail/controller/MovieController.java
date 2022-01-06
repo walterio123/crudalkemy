@@ -37,7 +37,7 @@ public class MovieController {
 	private final MovieService movieService;
 
 	@PostMapping
-	public ResponseEntity<MovieDTO> create(@RequestBody @Valid MovieDTO movie) throws NotFoundException {
+	public ResponseEntity<MovieDTO> create(@RequestBody @Valid MovieDTO movie) throws Exception {
 
 		if (movie.getId() != null) {
 			throw new NotFoundException("no send ID");
@@ -70,7 +70,7 @@ public class MovieController {
 	
 
 	@PutMapping
-	public ResponseEntity<MovieDTO> update(@RequestBody @Valid MovieDTO movieDTO) throws NotFoundException {
+	public ResponseEntity<MovieDTO> update(@RequestBody @Valid MovieDTO movieDTO) throws Exception {
 
 		return ResponseEntity.ok(movieService.update(movieDTO));
 	}

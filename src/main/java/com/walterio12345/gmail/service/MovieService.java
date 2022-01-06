@@ -18,13 +18,13 @@ public interface MovieService {
 	
 	List<MovieDTO> findAll(Sort sort);
 	
-	MovieDTO save(MovieDTO dto) throws NotFoundException;
+	MovieDTO save(MovieDTO dto) throws Exception;
 	
 	List<MovieDTO> findAll();
 	
 	MovieDTO findByID (String id) throws NotFoundException;
 	
-	MovieDTO update( MovieDTO dto) throws NotFoundException;
+	MovieDTO update( MovieDTO dto) throws Exception;
 	
 	void delete(String id) throws NotFoundException;
 	

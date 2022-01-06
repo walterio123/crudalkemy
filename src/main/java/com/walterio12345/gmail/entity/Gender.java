@@ -19,11 +19,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
-//@Getter
-//@Setter
-//@RequiredArgsConstructor
+@Getter
+@Setter
+@SQLDelete(sql="UPDATE genders SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 @Table(name = "genders")
 
 public class Gender {
@@ -33,12 +36,15 @@ public class Gender {
 	@Column(name = "id")
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+
 	private String id;
 	
-	//@Column(nullable = false,length = 40,unique = true)
+
 	private String name;
 	
 	private String image;
+
+	private boolean deleted=Boolean.FALSE;
 
 	@Override
 	public int hashCode() {
@@ -57,39 +63,7 @@ public class Gender {
 		return Objects.equals(id, other.id);
 	}
 
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public Gender(String id, String name, String image) {
-		this.id = id;
-		this.name = name;
-		this.image = image;
-	}
-
-	public Gender() {
-		super();
-	}
 
 	
 }

@@ -30,7 +30,6 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping(path = "/genders",produces = APPLICATION_JSON_VALUE)
 @Tag(name = "Gender",description = "Movie genre operations(CRUD)")
-//@RequiredArgsConstructor
 public class GenderController {
 	@Autowired
 	private GenderRepository genderRepository;

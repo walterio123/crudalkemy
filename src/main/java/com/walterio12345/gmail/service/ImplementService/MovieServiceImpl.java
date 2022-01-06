@@ -27,17 +27,18 @@ public class MovieServiceImpl implements MovieService{
 	
 	@Override
 	@Transactional
-	public MovieDTO save(MovieDTO dto) throws NotFoundException {
+	public MovieDTO save(MovieDTO dto) throws Exception {
 		
 		var movie=movieMapper.toEntity(dto);
-		return movieMapper.toDto(movieRepository.save(movie));
+		movieRepository.save(movie);
+		return movieMapper.toDto(movie,false);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<MovieDTO> findAll() {
-		
-		return movieMapper.toDto(movieRepository.findAll());
+		List<MovieDTO>movies=movieMapper.toDto(movieRepository.findAll(),false);
+		return movies;
 	}
 
 	@Override
@@ -45,16 +46,16 @@ public class MovieServiceImpl implements MovieService{
 	public MovieDTO findByID(String id) throws NotFoundException {
 		var movie=movieRepository.findById(id).orElseThrow(()->new NotFoundException("There is no movie with that id"));
 		
-		return movieMapper.toDto(movie);
+		return movieMapper.toDto(movie,false);
 	}
 
 	@Override
 	@Transactional
-	public MovieDTO update(MovieDTO dto) throws NotFoundException {
+	public MovieDTO update(MovieDTO dto) throws Exception {
 		
 		var movieID=movieRepository.findById(dto.getId()).orElseThrow(()->new NotFoundException("There is no movie with that id"));
 		var movie= movieRepository.save(movieMapper.toEntity(dto));
-		return movieMapper.toDto(movie);
+		return movieMapper.toDto(movie,false);
 	}
 
 	@Override
@@ -72,15 +73,15 @@ public class MovieServiceImpl implements MovieService{
 	@Transactional(readOnly = true)
 	public List<MovieDTO> findAllTitle(String title) {
 		
-		//TODO LISTA CON RELACIONES
-		return movieMapper.toDto(movieRepository.findByTitle(title));
+
+		return movieMapper.toDto(movieRepository.findByTitle(title),false);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<MovieDTO> findAll(Sort sort) {
 		
-		return movieMapper.toDto(movieRepository.findAll(sort));
+		return movieMapper.toDto(movieRepository.findAll(sort),false);
 	}
 	
 
@@ -88,7 +89,7 @@ public class MovieServiceImpl implements MovieService{
 	@Transactional(readOnly = true)
 	public List<MovieDTO> findAll(String idGender) {
 	
-		return movieMapper.toDto(movieRepository.findByGenderId(idGender));
+		return movieMapper.toDto(movieRepository.findByGenderId(idGender),false);
 	}
 
 	

@@ -1,7 +1,10 @@
 package com.walterio12345.gmail.dto;
 
+
+
 public class UserDto {
-		
+
+
 		private Long id;
 	  	private String username;
 	    private String password;

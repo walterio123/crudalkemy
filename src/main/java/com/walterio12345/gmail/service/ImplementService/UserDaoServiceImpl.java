@@ -2,7 +2,6 @@ package com.walterio12345.gmail.service.ImplementService;
 
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

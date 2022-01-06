@@ -3,6 +3,7 @@ package com.walterio12345.gmail.service;
 import java.util.List;
 import java.util.Set;
 
+
 import com.walterio12345.gmail.dto.CharacterDTO;
 
 import javassist.NotFoundException;
@@ -16,13 +17,13 @@ public interface CharacterService  {
 	List<CharacterDTO> findAll(Set<String>movies);
 	
 	
-	CharacterDTO save(CharacterDTO dto) throws NotFoundException;
+	CharacterDTO save(CharacterDTO dto) throws Exception;
 	
 	List<CharacterDTO> findAll();
 	
 	CharacterDTO findByID (String id) throws NotFoundException;
 	
-	CharacterDTO update( CharacterDTO dto) throws NotFoundException;
+	CharacterDTO update( CharacterDTO dto) throws Exception;
 	
 	void delete(String id) throws NotFoundException;
 
